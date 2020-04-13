@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: web
+ labels:
+   app: web
+   type: front-end
+spec:
+  template:
+    metadata:
+      name: web-pod
+      labels:
+        app: web
+        type: front-end
+    spec:
+      containers:
+        - name: web-pod
+          image: ithelpstream/webapp:2.0.0 
+  replicas: 1
+  selector:
+    matchLabels:
+      type: front-end

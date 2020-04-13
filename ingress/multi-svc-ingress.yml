@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: multi-svc-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web-service 
+          servicePort: 80
+      - path: /app 
+        backend:
+          serviceName: app-service 
+          servicePort: 80

@@ -1,0 +1,17 @@
+---
+# How do we want it implemented
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: webapp-storage
+  namespace: dev
+spec:
+  storageClassName: mylocal
+  capacity:
+    storage: 30Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/persis/webapp-vol"
+    type: DirectoryOr:Create
+

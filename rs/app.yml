@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: webapp-dev
+ labels:
+   app: webapp-dev
+   type: front-end
+spec:
+  template:
+    metadata:
+      name: webapp-dev
+      labels:
+        app: webapp
+        type: front-end
+    spec:
+      containers:
+        - name: webapp-dev
+          image: ithelpstream/webapp:1.0.0 
+  replicas: 3
+  selector:
+    matchLabels:
+      type: front-end
