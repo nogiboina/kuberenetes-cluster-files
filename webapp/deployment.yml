@@ -16,7 +16,12 @@ spec:
     spec:
       containers:
         - name: webapp-pod
-          image: ithelpstream/webapp:2.0.0 
+          image: ithelpstream/webapp:2.0.0
+          resources:
+           limits:
+            cpu: 100m
+           requests:
+            cpu: 100m 
       nodeSelector:
         node: node1
   replicas: 1
