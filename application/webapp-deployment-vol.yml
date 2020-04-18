@@ -15,7 +15,14 @@ spec:
     spec:
       containers:
         - name: webapp-pod
-          image: ithelpstream/webapp:2.0.0 
+          image: ithelpstream/webapp:2.0.0
+          volumeMounts:
+           - name: webapp-volume
+             mountPath: /opt 
+      volumes:
+       - name: webapp-volume
+         persistentVolumeClaim:
+           claimName: webapp-data
   replicas: 3
   selector:
     matchLabels:

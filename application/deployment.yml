@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
  name: webapp
+ namespace: web-application
  labels:
    app: webapp
    type: front-end
@@ -15,16 +16,10 @@ spec:
     spec:
       containers:
         - name: webapp-pod
-          image: ithelpstream/webapp:2.0.0
-          volumeMounts:
-           - name: webapp-host-vol
-             mountPath: /opt
-      volumes:
-       - name: webapp-host-vol
-         hostPath:
-          path: /home/webapp-vol 
-          type: DirectoryOrCreate
-  replicas: 3
+          image: ithelpstream/webapp:2.0.0 
+      nodeSelector:
+        node: node1
+  replicas: 1
   selector:
     matchLabels:
       type: front-end
