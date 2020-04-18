@@ -1,0 +1,10 @@
+#Reference: https://medium.com/platformer-blog/nfs-persistent-volumes-with-kubernetes-a-case-study-ce1ed6e2c266
+
+# Create a Disk in GCP
+gcloud compute disks create --size=10GB --zone=us-east1-b webapp-nfs-disk
+
+#Delete the existing disks in GCP
+gcloud compute disks delete --zone=us-east1-b webapp-nfs-disk
+  
+#List down all disks which are avialable on GCP
+gcloud compute zones list
